@@ -4,8 +4,8 @@
 // qxoxrogue
 //
 
-#ifndef test_Tile.h
-#define test_Tile.h
+#ifndef test_Tile_h
+#define test_Tile_h
 
 #include "tile/abstract_Stile.h"
 

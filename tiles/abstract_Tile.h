@@ -4,8 +4,8 @@
 // qxoxrogue
 //
 
-#ifndef abstract_Tile.h
-#define abstract_Tile.h
+#ifndef abstract_Tile_h
+#define abstract_Tile_h
 
 #include <vector>
 #define tlist std::vector<int> // change from vector later

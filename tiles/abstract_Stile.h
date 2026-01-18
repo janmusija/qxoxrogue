@@ -4,8 +4,8 @@
 // qxoxrogue
 //
 
-#ifndef abstract_Stile.h
-#define abstract_Stile.h
+#ifndef abstract_Stile_h
+#define abstract_Stile_h
 
 #include <vector>
 #define tlist std::vector<int> // change from vector later
