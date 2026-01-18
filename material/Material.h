@@ -22,6 +22,7 @@ class Material {
     qx_color color;
     mpz_class melt_point; // temp in millikelvin
     mpz_class boil_point; // also in mK
+    mpz_class density; // in g/m^3
     /* implement further properties e.g. specific heat, brittleness later ... but for now this is probably scope creep */
 };
 
