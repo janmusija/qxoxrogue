@@ -8,7 +8,10 @@
 #define abstract_Tile_h
 
 #include <vector>
+#include "space/Space.h"
+#ifndef tlist
 #define tlist std::vector<int> // change from vector later
+#endif
 
 class Tile {
 public: 

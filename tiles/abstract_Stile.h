@@ -8,7 +8,9 @@
 #define abstract_Stile_h
 
 #include <vector>
+#ifndef tlist
 #define tlist std::vector<int> // change from vector later
+#endif
 
 class Stile {
 public: 

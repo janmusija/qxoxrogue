@@ -1,0 +1,1 @@
+Spaces are the physical points in the world that can be occupied by entities, blocks, etc.
