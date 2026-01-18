@@ -1,0 +1,1 @@
+qxoxrogue will be *TK!!* rendered with ncurses.
