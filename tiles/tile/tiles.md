@@ -1,0 +1,1 @@
+tiles are the lowest level pieces of the world of qxoxrogue. they connect directly to other tiles.
