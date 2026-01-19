@@ -1,4 +1,5 @@
 # high priority
+- add entities and items to their spaces's lists of entities. 
 - working prototype
 
 # medium priority

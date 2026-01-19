@@ -9,7 +9,7 @@
 
 #include "render/render.h"
 
-#include <vector>
+#include <vector> // this should probably be a set or something.
 using eilist = std::vector<int>; // change from vector later
 
 class Space {

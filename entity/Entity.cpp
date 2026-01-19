@@ -5,19 +5,13 @@
 //
 
 #include "entity/Entity.h"
+#include "arrays/EArrays.h"
 
-Entity::Entity(const EntityTemplate & templ, unsigned int rk, int ti, int x, int y){
-    body = templ.body;
-    symb = templ.symb;
-
-    tile_rnk = rk;
-    tile_index = ti;
-    x_coord = x; y_coord = y;
-}
-
-Entity::Entity(EntityBody b, char_col sym, unsigned int rk, int ti, int x, int y){
+Entity::Entity(const EntityBody & b, const char_col & sym, unsigned int rk, int ti, int x=-1, int y=-1,int * uuidctr = &next_E_uuid){
     body = b;
     symb = sym;
+    uuid = *uuidctr;
+    ++uuidctr;
 
     tile_rnk = rk;
     tile_index = ti;
@@ -28,8 +22,4 @@ void Entity::mov(unsigned int rk, int ti, int x, int y){
     tile_rnk = rk;
     x_coord = x; y_coord = y;
     tile_index = ti;
-}
-
-void Entity::set_uuid(int u){
-    uuid = u;
 }

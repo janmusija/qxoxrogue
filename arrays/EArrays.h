@@ -16,4 +16,6 @@ class EArray : public qxArray<Entity>{
 extern EArray loaded_entities;
 extern int next_E_uuid;
 
+void registerentity(Entity&& entity, EArray *  arr = &loaded_entities);
+
 #endif // earrays_h

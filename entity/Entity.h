@@ -22,7 +22,8 @@ class Entity { // these are individual creatures, etc
     // location:
     unsigned int tile_rnk; // actually rank + 1, so that 0 -> Tile, 1 -> 0-Stile, etc. 
     int tile_index; // location in array at that level of detail
-    int uuid = -1; // entities with uuid -1 are not saved
+    int uuid;
+    int array_position = -1;
     // position within a tile. Currently, for Sanity, non-squaregrid tiles are not supported (however, exotic geometries on a higher level are.)
     int x_coord = -1;
     int y_coord = -1;
@@ -34,14 +35,12 @@ class Entity { // these are individual creatures, etc
     std::string name; // the entity's name. May be empty, and often is.
 
     // construct a new entity from a template and place within a tile, optionally at some space:
-    Entity(const EntityTemplate & templ, unsigned int rnk, int tile_index, int x = -1, int y = -1);
+    Entity(const EntityTemplate & templ, unsigned int rnk, int tile_index, int x, int y, int * uuidctr) : Entity(templ.body, templ.symb, rnk, tile_index, x, y, uuidctr) {};
 
-    Entity(EntityBody b, char_col sym, unsigned int rnk, int tile_index, int x = -1, int y = -1);
+    Entity(const EntityBody & b, const char_col & sym, unsigned int rnk, int tile_index, int x, int y, int * uuidctr);
     
     // move to a new space. yes, you must explicitly specify the new tile even if it is the same
     void mov(unsigned int rnk, int tile_index, int x = -1, int y = -1);
-
-    void set_uuid(int u);
 
     // is ai (or player)
     bool ai = 1;
