@@ -7,7 +7,7 @@
 #ifndef Space_h
 #define Space_h
 
-#include "../render/render.h"
+#include "render/render.h"
 
 #ifndef eilist
 #include <vector>

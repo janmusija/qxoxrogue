@@ -6,7 +6,7 @@
 
 #ifndef EntityBody_h
 #define EntityBody_h
-#include "../material/Material.h"
+#include "material/Material.h"
 
 class EntityBody {
     public:

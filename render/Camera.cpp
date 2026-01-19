@@ -4,11 +4,11 @@
 // qxoxrogue
 //
 
-#include "../render/Camera.h"
+#include "render/Camera.h"
 
 bool Camera::cam_to_display(){ // return 1 if successful, 0 otherwise
-    if (follow != NULL || follow->tile_rank == 0){
-        if (loaded_tiles.in_use(follow->tile_index)){
+    if (follow != NULL || follow->tile_rnk == 0){
+        if (loaded_tiles.nonnull(follow->tile_index)){
             tile = &(loaded_tiles[follow->tile_index]);
             center_x = follow->x_coord;
             center_y = follow->y_coord;
@@ -25,21 +25,20 @@ bool Camera::cam_to_display(){ // return 1 if successful, 0 otherwise
         center_x = tile->x_len/2;
         center_y = tile->y_len/2;
     }
-    for (int i = 0; i < tile->x_len; i++){
-        for (int j = 0; j < tile->y_len; j++){
+    for (unsigned int i = 0; i < tile->x_len; i++){
+        for (unsigned int j = 0; j < tile->y_len; j++){
             // logic to skip unseen tiles
-            depict(midx()- center_x+i,midy()-center_x + j,(tile->getSpace(i,j))->display){
-            }
+            depict(midx()- center_x+i,midy()-center_x + j,(tile->getSpace(i,j))->display);
         }
     }
     refresh();
     return 1;
 }
 
-Camera(Tile * t){
+Camera::Camera(Tile * t){
     tile = t;
 }
 
-Camera(const Entity * f){
+Camera::Camera(const Entity * f){
     follow = f;
 }

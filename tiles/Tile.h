@@ -8,19 +8,21 @@
 #define abstract_Tile_h
 
 #include <vector>
-#include "../space/Space.h"
+#include "base/macros.h"
+#include "space/Space.h"
 #ifndef tlist
 #define tlist std::vector<int> // change from vector later
 #endif
 
 class Tile {
 public: 
-    uint rank = 0; // this is the position within the hierarchical structure of
+    unsigned int rnk = 0; // this is the position within the hierarchical structure of
     int uuid;
     tlist neighb;
-    uint x_len;
-    uint y_len;
+    unsigned int x_len;
+    unsigned int y_len;
     virtual Space * getSpace(int x,int y) =0;
+    virtual ~Tile() = default;
 };
 
 #endif // abstract_Tile.h

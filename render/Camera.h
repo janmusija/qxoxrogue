@@ -7,11 +7,11 @@
 #ifndef Camera_h
 #define Camera_h
 
-#include "../render/render.h"
-#include "../entity/Entity.h"
-#include "../space/Space.h"
-#include "../tiles/Tile.h"
-#include "../arrays/TArrays.h"
+#include "render/render.h"
+#include "entity/Entity.h"
+#include "space/Space.h"
+#include "tiles/Tile.h"
+#include "arrays/TArrays.h"
 
 class Camera {
     public:

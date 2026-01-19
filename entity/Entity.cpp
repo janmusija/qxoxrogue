@@ -4,30 +4,30 @@
 // qxoxrogue
 //
 
-#include "../entity/Entity.h"
+#include "entity/Entity.h"
 
-Entity::Entity(const EntityTemplate & templ, uint rk, int ti, int x, int y){
+Entity::Entity(const EntityTemplate & templ, unsigned int rk, int ti, int x, int y){
     body = templ.body;
     symb = templ.symb;
     col = templ.col;
 
-    tile_rank = rk;
+    tile_rnk = rk;
     tile_index = ti;
     x_coord = x; y_coord = y;
 }
 
-Entity::Entity(EntityBody b, qx_char sym, qx_col c, uint rk, int ti, int x, int y){
+Entity::Entity(EntityBody b, qx_char sym, qx_col c, unsigned int rk, int ti, int x, int y){
     body = b
     symb = sym;
     col = c;
 
-    tile_rank = rk;
+    tile_rnk = rk;
     tile_index = ti;
     x_coord = x; y_coord = y;
 }
 
-void Entity::move(uint rk, int ti, int x, int y){
-    tile_rank = rk;
+void Entity::move(unsigned int rk, int ti, int x, int y){
+    tile_rnk = rk;
     x_coord = x; y_coord = y;
     tile_index = ti;
 }

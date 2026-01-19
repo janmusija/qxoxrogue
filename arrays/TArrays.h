@@ -7,9 +7,9 @@
 #ifndef tarrays_h
 #define tarrays_h
 
-#include "../tiles/Tile.h"
-#include "../tiles/Stile.h"
-#include "../arrays/qxArray.h"
+#include "tiles/Tile.h"
+#include "tiles/Stile.h"
+#include "arrays/qxArray.h"
 
 class TArray : public qxArray<Tile>{
 };

@@ -1,7 +1,7 @@
 CXX      := g++
 TARGET   := qxoxrogue
 
-CXXFLAGS := -Wall -Wextra -std=c++17 -O2 -g
+CXXFLAGS := -Wall -Wextra -std=c++20 -O2 -I. -g
 LDFLAGS  :=
 LDLIBS   := -lncursesw -lgmp -lgmpxx
 

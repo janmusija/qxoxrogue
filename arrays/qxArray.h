@@ -7,22 +7,22 @@
 #ifndef qxArray_h
 #define qxArray_h
 
-#include <vector>
+#include <memory>
+#include <unordered_map>
 
 /*
     class qxArray<T>
 
     important functions:
-    get_next : size_type -> size_type, returns next position in array currently in use
+    iterator
     remove : size_type -> * remove something from the array.
     insert : T -> size_type add a new element to the array, and return its position in the array
     operator[] -> : size_type -> (const) reference : access any position in the array 
     
     Currently qxArray<T> is implemented as:
-    vector of pairs (T, bool)
+    unordered_map<int,std::unique_ptr<T>>
 
     running times for current implementations:
-    get_next -> O(size) in worst case but O(1) on average (iterating through whole array is O(size)).
     remove -> O(1)
     insert -> unsure, but generally << O(size). typically O(1) if the array is full or if there is a block of unoccupied memory
     operator[] -> O(1)
@@ -31,21 +31,23 @@
     bools represent whether they are in use (true) or safe to overwrite (false)
 */
 
-template < typename T> class qxArray{
+template < typename T> class qxArray{ // a map larping as a noncontiguous vector
     public:
-    typedef std::vector<std::pair<T,bool>>              pairs_list_type;
+    typedef std::unordered_map<int,std::unique_ptr<T>>  ulm_type; // (u)nder(l)ying (m)ap
     typedef T                                           value_type;
-    typedef typename pairs_list_type::size_type		    size_type;
-    typedef typename pairs_list_type::reference		    reference;
-    typedef typename pairs_list_type::const_reference	const_reference;
+    typedef typename ulm_type::key_type		    size_type;
+    typedef T &		                            reference;
+    typedef const T &                        	const_reference;
+    typedef typename ulm_type::iterator		    iterator;
+    typedef typename ulm_type::const_iterator	const_iterator;
 
     private:
-    pairs_list_type pairs_list;
+    ulm_type ulm;
     size_type next_free;
 
     private:
-    void increment_next_free(){ // this works even if next_free == pairs_list.size()
-        while (++next_free < pairs_list.size() && (pairs_list[next_free].second())){}
+    void increment_next_free(){ // this works even if next_free == ulm.size()
+        while (ulm.contains(++next_free) && ulm[next_free]){}
     }
     
     public:
@@ -53,45 +55,50 @@ template < typename T> class qxArray{
         next_free = 0;
     }
 
-    size_type get_next (size_type n) const{ // return the next position in the array which is flagged as in use, or 0 otherwise (note "0" is never NEXT!)
-        while (++n < pairs_list.size() && !(pairs_list[n].second())){}
-        if (n < pairs_list.size()) {return n;}
-        return 0;
+    bool contains(size_type n) const{ // includes null
+        return ulm.contains(n);
     }
 
-    bool remove(size_type n) { // return 0 if removed position was already flagged as removed
-        bool b = pairs_list[n].second();
+    bool nonnull(size_type n) const{ 
+        return (contains(n) && ulm.at(n));
+    }
+
+    bool remove(size_type n) { // return 0 if removed position was already flagged as removed/nullptr
+        bool b = ulm.contains(n) && ulm[n];
         if (n < next_free){next_free = n;}
+        ulm.erase(n);
         return b;
     }
 
-    size_type insert(const T & __x) { // returns the position of the newly added object
+    iterator begin() noexcept { return ulm.begin();}
+    const_iterator begin() const noexcept { return ulm.begin();}
+    iterator end() noexcept { return ulm.end();}
+    const_iterator end() const noexcept { return ulm.end();}
+
+    template <typename SubT, typename... Args> size_type insert(Args&&... args) { // returns the position of the newly added object
+        static_assert(std::is_base_of_v<T, SubT>,"SubT must derive from T");
         size_type pos = next_free;
-        increment_next_free;
-        if (pos > pairs_list.size()){
-            pairs_list.push_back(__x);
-        } else {
-            pairs_list[pos].first() = __x;
-            pairs_list[pos].second() = true;
-        }
+        increment_next_free();
+        ulm.erase(pos);
+        ulm.try_emplace(pos,std::make_unique<SubT>(std::forward<Args>(args)...));
         return pos;
     }
 
-    size_type size() { // returns the size of the array. does not 
-        return pairs_list.size();
+    size_type size() { // returns the size of the array.
+        return ulm.size();
     }
 
     // element access
     reference operator[](size_type __n){
-        return pairs_list[__n].first();
+        return *ulm[__n];
     }
     // const access
-    const_reference operator[](size_type __n) const{
-        return pairs_list[__n].first();
+    reference at(size_type __n){
+        return *ulm.at(__n);
     }
-    // check bool
-    bool in_use(size_type __n) const{
-        return pairs_list[__n].second();
+    // const access
+    const_reference at(size_type __n) const{
+        return *ulm.at(__n);
     }
 
 };

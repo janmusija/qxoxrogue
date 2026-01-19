@@ -7,8 +7,8 @@
 #ifndef earrays_h
 #define earrays_h
 
-#include "../entity/Entity.h"
-#include "../arrays/qxArray.h"
+#include "entity/Entity.h"
+#include "arrays/qxArray.h"
 
 class EArray : public qxArray<Entity>{
 };

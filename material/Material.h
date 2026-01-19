@@ -10,8 +10,8 @@
 #include <ncurses.h>
 #include <locale.h>
 #include <gmpxx.h>
-#include "../render/render.h"
-#include "../documentation/units.h" // useful for converting between different units
+#include "render/render.h"
+#include "documentation/units.h" // useful for converting between different units
 
 class Material {
     public:
@@ -24,6 +24,7 @@ class Material {
     mpz_class boil_point; // also in mK
     mpz_class density; // in g/m^3
     /* implement further properties e.g. specific heat, brittleness later ... but for now this is probably scope creep */
+    virtual ~Material() = default;
 };
 
 #endif // Material.h

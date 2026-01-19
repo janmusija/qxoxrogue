@@ -7,7 +7,7 @@
 #ifndef Med_Tile_h
 #define Med_Tile_h
 
-#include "../Tile.h"
+#include "tiles/Tile.h"
 
 // med_tile is a 16x16 grid of spaces.
 
