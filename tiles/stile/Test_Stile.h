@@ -13,10 +13,11 @@
 
 class Test_Stile : public Stile {
 public:
-    int[4][4] subt = {{-1,-1,-1,-1},{-1,-1,-1,-1},{-1,-1,-1,-1},{-1,-1,-1,-1}}; // uninitialized
+    int subt[4][4] = {{-1,-1,-1,-1},{-1,-1,-1,-1},{-1,-1,-1,-1},{-1,-1,-1,-1}}; // uninitialized
     Test_Stile(unsigned int rk);
     void generate_subStile_at(int * const t) override; // create a new Stile at this position [intended to be within the Stile]
     void generate_subTile_at(int * const t) override; // create a new Tile at this position
+    Test_Stile(Test_Stile&&) = default;
 };
 
 #endif // Test_Stile.h

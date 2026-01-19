@@ -16,8 +16,8 @@ Entity::Entity(const EntityTemplate & templ, unsigned int rk, int ti, int x, int
     x_coord = x; y_coord = y;
 }
 
-Entity::Entity(EntityBody b, qx_char sym, qx_col c, unsigned int rk, int ti, int x, int y){
-    body = b
+Entity::Entity(EntityBody b, qx_char sym, qx_color c, unsigned int rk, int ti, int x, int y){
+    body = b;
     symb = sym;
     col = c;
 

@@ -8,12 +8,12 @@
 #include "tiles/tile/Med_Tile.h"
 #include "arrays/TArrays.h"
 
-void Test_Stile::generate_subStile_at (int * const t) override{
-    Test_Stile nt;
-    loaded_tiles.insert(std::move(nt))
+void Test_Stile::generate_subStile_at (int * const t){
+    Test_Stile nt(rnk-1);
+    loaded_stiles.insert<Test_Stile>(std::move(nt));
 }  
 
-void Test_Stile::generate_subTile_at (int * const t) override {
+void Test_Stile::generate_subTile_at (int * const t) {
     Med_Tile nt;
-    loaded_tiles.insert(std::move(nt))
+    loaded_tiles.insert<Med_Tile>(std::move(nt));
 }

@@ -18,6 +18,7 @@ public:
     Space * getSpace(int x,int y) override{
         return &(spaces[x][y]);
     }
+    Med_Tile(Med_Tile&&) = default;
 };
 
 #endif // Med_Tile.h
