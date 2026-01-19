@@ -1,8 +1,9 @@
 CXX      := g++
 TARGET   := qxoxrogue
 
-CXXFLAGS := -Wall -Wextra -std=c++20 -O2 -I. -g
-LDFLAGS  :=
+# fsanitize can be removed in a bit when I'm done debugging. -fsanitize=address -fsanitize=undefined in CXXFLAGS and LDFLAGS can help determine why segfaulting is happening
+CXXFLAGS := -Wall -Wextra -std=c++20 -O2 -I. -fsanitize=address -fsanitize=undefined -g
+LDFLAGS  := -fsanitize=address -fsanitize=undefined
 LDLIBS   := -lncursesw -lgmp -lgmpxx
 
 # Put all build artifacts here

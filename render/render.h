@@ -46,14 +46,24 @@ inline void register_color_pairs(){
     }
 }
 
-inline void depict(int x, int y, const qx_char & symb, const qx_color & col){
+inline void depict(int y, int x, const qx_char & symb, const qx_color & col){
     attron(COLOR_PAIR(col));
-    mvaddwstr(x,y,std::wstring({symb}).c_str()); // there is a better way to do this and I don't know what it is.
+    mvaddwstr(y,x,std::wstring({symb}).c_str()); // there is a better way to do this and I don't know what it is.
     attroff(COLOR_PAIR(col));
 }
 
-inline void depict(int x, int y, const char_col & symb){
-    depict(x,y,symb.first,symb.second);
+inline void depict(int y, int x, const char_col & symb){
+    depict(y,x,symb.first,symb.second);
+}
+
+inline void wdepict(WINDOW * window, int y, int x, const qx_char & symb, const qx_color & col){
+    attron(COLOR_PAIR(col));
+    mvwaddwstr(window, y,x,std::wstring({symb}).c_str()); // there is a better way to do this and I don't know what it is.
+    attroff(COLOR_PAIR(col));
+}
+
+inline void wdepict(WINDOW * window, int y, int x, const char_col & symb){
+    wdepict(window,y,x,symb.first,symb.second);
 }
 
 

@@ -7,7 +7,7 @@
 #include "render/Camera.h"
 
 bool Camera::cam_to_display(){ // return 1 if successful, 0 otherwise
-    if (follow != NULL || follow->tile_rnk == 0){
+    if (follow != NULL && follow->tile_rnk == 0){
         if (loaded_tiles.nonnull(follow->tile_index)){
             tile = &(loaded_tiles[follow->tile_index]);
             center_x = follow->x_coord;
@@ -28,7 +28,9 @@ bool Camera::cam_to_display(){ // return 1 if successful, 0 otherwise
     for (unsigned int i = 0; i < tile->x_len; i++){
         for (unsigned int j = 0; j < tile->y_len; j++){
             // logic to skip unseen tiles
-            depict(midx()- center_x+i,midy()-center_x + j,(tile->getSpace(i,j))->display);
+            int pos_x = i+midx()-center_x;
+            int pos_y = j+midy()-center_y;
+            depict(pos_y,pos_x,(tile->getSpace(i,j))->display); // be WARY! ncurses puts y first and x second, because Spite.
         }
     }
     refresh();

@@ -52,6 +52,7 @@ int main(int argc, char *argv[]){
     setlocale(LC_ALL,"");
     initscr();
     register_color_pairs();
+    curs_set(0);
 
 
 
@@ -59,6 +60,8 @@ int main(int argc, char *argv[]){
     Med_Tile m;
     Camera cam(&m);
     cam.cam_to_display();
+    //mvprintw(midy(),midx(),(std::to_string(midx()) + "," + std::to_string(midy())).c_str());
+    refresh();
     
     getch(); // for now, to keep from immediately closing
 
