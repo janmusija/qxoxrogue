@@ -7,7 +7,7 @@
 /*
     dependencies: ncurses (ncursesw), gmp.
     compile with
-    g++ main.cpp -Wall -Wextra -lncursesw -lgmp -lgmpxx -o qxoxrogue
+    make
     then run
     ./qxoxrogue
 */

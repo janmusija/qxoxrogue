@@ -20,7 +20,7 @@ public:
     tlist neighb;
     uint x_len;
     uint y_len;
-    virtual Space * getSpace(int x,int y) {};
+    virtual Space * getSpace(int x,int y) =0;
 };
 
 #endif // abstract_Tile.h

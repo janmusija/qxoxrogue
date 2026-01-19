@@ -9,6 +9,8 @@
 
 #include <ncurses.h>
 #include <locale.h>
+#include <string>
+#include <utility>
 #define qx_char wchar_t // for now, or maybe for ever
 #define qx_color int // for now
 

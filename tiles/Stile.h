@@ -18,8 +18,8 @@ public:
     int uuid;
     tlist subtiles;
     tlist neighb;
-    virtual void generate_subStile_at(int * const t) {}; // create a new Stile at this position [intended to be within the Stile]
-    virtual void generate_subTile_at(int * const t) {}; // create a new Tile at this position
+    virtual void generate_subStile_at(int * const t) =0; // create a new Stile at this position [intended to be within the Stile]
+    virtual void generate_subTile_at(int * const t) =0; // create a new Tile at this position
     void generate_sub(int * const target); // create a new Tile or Stile at this position 
 };
 

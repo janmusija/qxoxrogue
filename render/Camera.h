@@ -16,11 +16,11 @@
 class Camera {
     public:
     const Entity * follow = nullptr; // can be null without issue
-    const Tile * tile = nullptr;
+    Tile * tile = nullptr; // this should really be const but I'm unsure the best way to do so
     int center_x = -1;
     int center_y = -1;
     bool cam_to_display();
-    Camera(const Tile * t);
+    Camera(Tile * t);
     Camera(const Entity * f);
 };
 
