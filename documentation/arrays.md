@@ -1,3 +1,3 @@
 qxoxrogue uses the structure "qxArray" to store loaded information.
 
-They are designed to be decently performant.
+They are designed to be decently performant for their purpose.

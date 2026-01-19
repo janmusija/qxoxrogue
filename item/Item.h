@@ -8,6 +8,8 @@
 #define Item_h
 
 #include "render/render.h"
+#include "item/Item_Type.h"
+#include <gmpxx.h>
 
 class Item { // these may be complicated-- I don't want to limit them to consisting of only one material.
     public:
@@ -16,7 +18,11 @@ class Item { // these may be complicated-- I don't want to limit them to consist
     char_col symb;
     virtual ~Item() = default;
     Item(Item&&) = default;
+    mpz_class mass;
+    mpz_class volume;
     // TK
+    Item(const Item_Type & typ, int u=-1);
+    Item(const Material_Item_Type_Template & templ, const Material & mat, int state = 0, int u =-1) : Item (Item_Type(templ,mat,state), u){};
 };
 
 #endif // Item.h
