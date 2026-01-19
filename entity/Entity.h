@@ -14,8 +14,7 @@ class EntityTemplate { // these are basically "species"
     public:
     std::string name; // the name of this template
     EntityBody body;
-    qx_char symb;
-    qx_color col;
+    char_col symb;
 };
 
 class Entity { // these are individual creatures, etc
@@ -30,24 +29,24 @@ class Entity { // these are individual creatures, etc
     
     EntityBody body; // the entity's body
     bool Corporeal = true; // if false, does not render. can still have a body.
-    qx_char symb; // associated symbol to be rendered with
-    qx_color col;
+    char_col symb; // associated symbol to be rendered with
 
     std::string name; // the entity's name. May be empty, and often is.
 
     // construct a new entity from a template and place within a tile, optionally at some space:
     Entity(const EntityTemplate & templ, unsigned int rnk, int tile_index, int x = -1, int y = -1);
 
-    Entity(EntityBody b, qx_char sym, qx_color c, unsigned int rnk, int tile_index, int x = -1, int y = -1);
+    Entity(EntityBody b, char_col sym, unsigned int rnk, int tile_index, int x = -1, int y = -1);
     
     // move to a new space. yes, you must explicitly specify the new tile even if it is the same
-    void move(unsigned int rnk, int tile_index, int x = -1, int y = -1);
+    void mov(unsigned int rnk, int tile_index, int x = -1, int y = -1);
 
     void set_uuid(int u);
 
     // is ai (or player)
     bool ai = 1;
     virtual ~Entity() = default;
+    Entity(Entity&&) = default;
 };
 
 #endif // Entity.h

@@ -30,10 +30,12 @@ bool Camera::cam_to_display(){ // return 1 if successful, 0 otherwise
             // logic to skip unseen tiles
             int pos_x = i+midx()-center_x;
             int pos_y = j+midy()-center_y;
-            depict(pos_y,pos_x,(tile->getSpace(i,j))->display); // be WARY! ncurses puts y first and x second, because Spite.
+            depict(pos_y,pos_x,(tile->getSpace(i,j))->display(cameratick/CAMERA_LINGER_TIME)); // be WARY! ncurses puts y first and x second, because Spite.
         }
     }
     refresh();
+    ++cameratick;
+    if (cameratick > CAMERA_LOOP_PERIOD * CAMERA_LINGER_TIME){cameratick = 0;}
     return 1;
 }
 

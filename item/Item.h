@@ -12,9 +12,10 @@
 class Item { // these may be complicated-- I don't want to limit them to consisting of only one material.
     public:
     std::string internal_name;
-    
-    qx_char symbol;
-    virtual ~Entity() = default;
+    int uuid = -1;
+    char_col symb;
+    virtual ~Item() = default;
+    Item(Item&&) = default;
     // TK
 };
 

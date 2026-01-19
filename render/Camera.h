@@ -13,6 +13,9 @@
 #include "tiles/Tile.h"
 #include "arrays/TArrays.h"
 
+#define CAMERA_LINGER_TIME 12 // number of frames (maybe later just make this actual literal time) to linger on a given item within a number of stacked entities/items
+#define CAMERA_LOOP_PERIOD 50 // number of distinct items to cycle through in this situation
+
 class Camera {
     public:
     const Entity * follow = nullptr; // can be null without issue
@@ -22,6 +25,8 @@ class Camera {
     bool cam_to_display();
     Camera(Tile * t);
     Camera(const Entity * f);
+
+    unsigned int cameratick = 0;
 };
 
 #endif // Camera.h
