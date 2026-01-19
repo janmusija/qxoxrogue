@@ -9,10 +9,8 @@
 
 #include "render/render.h"
 
-#ifndef eilist
 #include <vector>
-#define eilist std::vector<int> // change from vector later?
-#endif
+using eilist = std::vector<int>; // change from vector later
 
 class Space {
 public:

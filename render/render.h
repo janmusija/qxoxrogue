@@ -32,27 +32,27 @@ COLOR_WHITE	7
 #define codepage_437 L"\u0000\u263a\u263b\u2665\u2666\u2663\u2660\u2022\u25d8\u25cb\u25d9\u2642\u2640\u266a\u266ba" // TK
 #define CHAR_SET codepage_437
 
-int midx(const WINDOW * w =stdscr) {return getmaxx(w)/2;}
-int midy(const WINDOW * w =stdscr) {return getmaxy(w)/2;}
+inline int midx(const WINDOW * w =stdscr) {return getmaxx(w)/2;}
+inline int midy(const WINDOW * w =stdscr) {return getmaxy(w)/2;}
 
-int unpair_fg(int fgbg){return fgbg/8;}
-int unpair_bg(int fgbg){return fgbg%8;}
-int pair_fgbg(int fg, int bg){return fg*8 + bg;} 
+inline int unpair_fg(int fgbg){return fgbg/8;}
+inline int unpair_bg(int fgbg){return fgbg%8;}
+inline int pair_fgbg(int fg, int bg){return fg*8 + bg;} 
 
-void register_color_pairs(){
+inline void register_color_pairs(){
     start_color();
     for (int i = 0; i<16*8; i++){
         init_pair(i,unpair_fg(i),unpair_bg(i));
     }
 }
 
-void depict(int x, int y, const qx_char & symb, const qx_color & col){
+inline void depict(int x, int y, const qx_char & symb, const qx_color & col){
     attron(COLOR_PAIR(col));
     mvaddwstr(x,y,std::wstring({symb}).c_str()); // there is a better way to do this and I don't know what it is.
     attroff(COLOR_PAIR(col));
 }
 
-void depict(int x, int y, const char_col & symb){
+inline void depict(int x, int y, const char_col & symb){
     depict(x,y,symb.first,symb.second);
 }
 

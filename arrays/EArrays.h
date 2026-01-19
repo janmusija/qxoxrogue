@@ -13,6 +13,7 @@
 class EArray : public qxArray<Entity>{
 };
 
-EArray loaded_entities;
+extern EArray loaded_entities;
+extern int next_E_uuid;
 
 #endif // earrays_h

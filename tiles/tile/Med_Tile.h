@@ -14,7 +14,7 @@
 class Med_Tile : public Tile {
 public:
     Space spaces[16][16];
-    Med_Tile() {x_len = 16; y_len = 16;};
+    Med_Tile();
     Space * getSpace(int x,int y) override{
         return &(spaces[x][y]);
     }

@@ -10,9 +10,7 @@
 #include <vector>
 #include "base/macros.h"
 #include "space/Space.h"
-#ifndef tlist
-#define tlist std::vector<int> // change from vector later
-#endif
+using tlist = std::vector<int>; // change from vector later
 
 class Tile {
 public: 

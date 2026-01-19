@@ -16,7 +16,9 @@ class TArray : public qxArray<Tile>{
 class StArray : public qxArray<Stile>{
 };
 
-StArray loaded_stiles; // the loaded stiles
-TArray loaded_tiles; // the loaded tiles
+extern StArray loaded_stiles; // the loaded stiles
+extern TArray loaded_tiles; // the loaded tiles
+extern int next_St_uuid;
+extern int next_T_uuid;
 
 #endif // tarrays.h
