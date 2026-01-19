@@ -1,12 +1,12 @@
 //
-// abstract_Stile.cpp
+// Stile.cpp
 // 2026-01-17
 // qxoxrogue
 //
 
-#include "tiles/abstract_Stile.h"
+#include "tiles/Stile.h"
 
-void abstract_Stile::generate_sub(int * const target){
+void Stile::generate_sub(int * const target){
     if (rank > 0){
         generate_subStile_at(target);
     } else {

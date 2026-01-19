@@ -7,15 +7,16 @@
 #ifndef Test_Stile_h
 #define Test_Stile_h
 
-#include "tile/abstract_Stile.h"
+#include "../tiles/Stile.h"
 
-// test_Stile is a 4x4 stile with a position in the world.
+// test_Stile is a 4x4 stile.
 
-class Test_Stile : abstract_Stile {
+class Test_Stile : Stile {
 public:
-    int pos_x = 0;
-    int pos_y = 0;
     int[4][4] subt = {{-1,-1,-1,-1},{-1,-1,-1,-1},{-1,-1,-1,-1},{-1,-1,-1,-1}}; // uninitialized
+    Test_Stile(uint rk);
+    void generate_subStile_at(int * const t) override; // create a new Stile at this position [intended to be within the Stile]
+    void generate_subTile_at(int * const t) override; // create a new Tile at this position
 };
 
 #endif // Test_Stile.h

@@ -7,7 +7,6 @@
 #ifndef Entity_h
 #define Entity_h
 
-#include "../space/Space.h"
 #include "../render/render.h"
 #include "../entity/EntityBody.h"
 
@@ -22,10 +21,12 @@ class EntityTemplate { // these are basically "species"
 class Entity { // these are individual creatures, etc
     public:
     // location:
-    uint rank; // actually rank + 1, so that 0 -> Tile, 1 -> 0-Stile, etc. 
+    uint tile_rank; // actually rank + 1, so that 0 -> Tile, 1 -> 0-Stile, etc. 
     int tile_index; // location in array at that level of detail
     int uuid = -1; // entities with uuid -1 are not saved
-    Space* spaceptr; // if not null, points to current position. Nulled when tile unloaded.
+    // position within a tile. Currently, for Sanity, non-squaregrid tiles are not supported (however, exotic geometries on a higher level are.)
+    int x_coord = -1;
+    int y_coord = -1;
     
     EntityBody body; // the entity's body
     bool Corporeal = true; // if false, does not render. can still have a body.
@@ -35,12 +36,12 @@ class Entity { // these are individual creatures, etc
     std::string name; // the entity's name. May be empty, and often is.
 
     // construct a new entity from a template and place within a tile, optionally at some space:
-    Entity(const EntityTemplate & templ, uint rank, int tile_index, const Space* sptr=nullptr);
+    Entity(const EntityTemplate & templ, uint rank, int tile_index, int x = -1, int y = -1);
 
-    Entity(EntityBody b, qx_char sym, qx_color c, uint rank, int tile_index, const Space* sptr=nullptr);
+    Entity(EntityBody b, qx_char sym, qx_color c, uint rank, int tile_index, int x = -1, int y = -1);
     
     // move to a new space. yes, you must explicitly specify the new tile even if it is the same
-    void move(uint rank, int tile_index, const Space* sptr=nullptr);
+    void move(uint rank, int tile_index, int x = -1, int y = -1);
 
     void set_uuid(int u);
 

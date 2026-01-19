@@ -17,6 +17,8 @@
 #include "render/render.h"
 #include "documentation/units.h"
 #include "entity/Player.h"
+#include "arrays/EArrays.h"
+#include "arrays/TArrays.h"
 
 int main(int argc, char *argv[]){
     // determine whether to initialize a fresh game or something else
@@ -44,12 +46,18 @@ int main(int argc, char *argv[]){
             // generate fresh world TK
         }
     }
-    // initialize game
+    // initialize nscurses
     setlocale(LC_ALL,"");
     initscr();
-    //printw("Hello Von Neumann Universe\n");
-    //printw(F_to_mK(mpz_class(-40)).get_str().c_str()); printw(" millikelvin is about -40 Fahrenheit\n");
-    //addwstr(L"\u00a3 <- pound sign.\n");
+    register_color_pairs();
+    
+    // debug -- test rendering
+    for (int i = 0; i<16; i++){
+        for (int j = 0; j<8; j++){
+            depict(i,j,'E',pair_fgbg(i,j));
+        }
+    }
+
     refresh();
     getch();
     endwin();

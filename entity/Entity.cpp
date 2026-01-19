@@ -6,29 +6,29 @@
 
 #include "../entity/Entity.h"
 
-Entity::Entity(const EntityTemplate & templ, uint rk, int ti, const Space* sptr){
+Entity::Entity(const EntityTemplate & templ, uint rk, int ti, int x, int y){
     body = templ.body;
     symb = templ.symb;
     col = templ.col;
 
-    rank = rk;
+    tile_rank = rk;
     tile_index = ti;
-    spaceptr = sptr;
+    x_coord = x; y_coord = y;
 }
 
-Entity::Entity(EntityBody b, qx_char sym, qx_col c, uint rk, int ti, const Space* sptr){
+Entity::Entity(EntityBody b, qx_char sym, qx_col c, uint rk, int ti, int x, int y){
     body = b
     symb = sym;
     col = c;
 
-    rank = rk;
+    tile_rank = rk;
     tile_index = ti;
-    spaceptr = sptr;
+    x_coord = x; y_coord = y;
 }
 
-void Entity::move(uint rk, int ti, const Space* sptr){
-    rank = rk;
-    spaceptr = sptr;
+void Entity::move(uint rk, int ti, int x, int y){
+    tile_rank = rk;
+    x_coord = x; y_coord = y;
     tile_index = ti;
 }
 
