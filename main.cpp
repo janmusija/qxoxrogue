@@ -15,10 +15,12 @@
 #include <iostream>
 #include <ctime>
 #include "render/render.h"
+#include "render/Camera.h"
 #include "documentation/units.h"
 #include "entity/Player.h"
 #include "arrays/EArrays.h"
 #include "arrays/TArrays.h"
+#include "tiles/tile/Med_Tile.h"
 
 int main(int argc, char *argv[]){
     // determine whether to initialize a fresh game or something else
@@ -50,16 +52,19 @@ int main(int argc, char *argv[]){
     setlocale(LC_ALL,"");
     initscr();
     register_color_pairs();
-    
-    // debug -- test rendering
-    for (int i = 0; i<16; i++){
-        for (int j = 0; j<8; j++){
-            depict(i,j,'E',pair_fgbg(i,j));
-        }
-    }
 
-    refresh();
-    getch();
+
+
+
+    Med_Tile m;
+    Camera cam(&m);
+    cam.cam_to_display();
+    
+    getch(); // for now, to keep from immediately closing
+
+
+
+
     endwin();
     return 0;
 }

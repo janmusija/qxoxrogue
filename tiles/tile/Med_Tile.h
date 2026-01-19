@@ -7,16 +7,16 @@
 #ifndef Med_Tile_h
 #define Med_Tile_h
 
-#include "../tiles/Tile.h"
+#include "../Tile.h"
 
 // med_tile is a 16x16 grid of spaces.
 
-class Med_Tile : Tile {
+class Med_Tile : public Tile {
 public:
-    Space[16][16]; spaces;
+    Space spaces[16][16];
     Med_Tile() {x_len = 16; y_len = 16;};
     Space * getSpace(int x,int y) override{
-        return *(Spaces[x][y]);
+        return &(spaces[x][y]);
     }
 };
 

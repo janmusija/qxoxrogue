@@ -10,7 +10,7 @@
 #include "../entity/Entity.h"
 #include "../arrays/qxArray.h"
 
-class EArray : qxArray<Entity>{
+class EArray : public qxArray<Entity>{
 };
 
 EArray loaded_entities;

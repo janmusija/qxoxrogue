@@ -11,7 +11,7 @@
 
 // test_Stile is a 4x4 stile.
 
-class Test_Stile : Stile {
+class Test_Stile : public Stile {
 public:
     int[4][4] subt = {{-1,-1,-1,-1},{-1,-1,-1,-1},{-1,-1,-1,-1},{-1,-1,-1,-1}}; // uninitialized
     Test_Stile(uint rk);

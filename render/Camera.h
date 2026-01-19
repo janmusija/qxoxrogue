@@ -14,26 +14,14 @@
 #include "../arrays/TArrays.h"
 
 class Camera {
-    Entity * follow = nullptr; // can be null without issue
-    Tile * tile = nullptr;
+    public:
+    const Entity * follow = nullptr; // can be null without issue
+    const Tile * tile = nullptr;
     int center_x = -1;
     int center_y = -1;
-    bool push_to_display(){ // return 1 if successful, 0 otherwise
-        if (follow != NULL || follow.tile_rank == 0){
-            if (loaded_tiles.in_use(follow.tile_index)){
-                tile = &(loaded_tiles[follow.tile_index]);
-                center_x = follow.x_coord;
-                center_y = follow.y_coord;
-            } else {
-                tile = nullptr;
-            }
-            // todo: implement following, by finding tile and center_space from the entity
-        }
-        if (tile == NULL){
-            return 0;
-        }
-        else
-    }
+    bool cam_to_display();
+    Camera(const Tile * t);
+    Camera(const Entity * f);
 };
 
 #endif // Camera.h

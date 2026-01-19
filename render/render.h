@@ -27,6 +27,9 @@ COLOR_WHITE	7
 
 #define char_col std::pair<qx_char,qx_color>
 
+#define codepage_437 L"\u0000\u263a\u263b\u2665\u2666\u2663\u2660\u2022\u25d8\u25cb\u25d9\u2642\u2640\u266a\u266ba" // TK
+#define CHAR_SET codepage_437
+
 int midx(const WINDOW * w =stdscr) {return getmaxx(w)/2;}
 int midy(const WINDOW * w =stdscr) {return getmaxy(w)/2;}
 

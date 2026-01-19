@@ -11,12 +11,12 @@
 #include "../tiles/Stile.h"
 #include "../arrays/qxArray.h"
 
-class TArray : qxArray<Tile>{
+class TArray : public qxArray<Tile>{
 };
-class StArray : qxArray<Stile>{
+class StArray : public qxArray<Stile>{
 };
 
 StArray loaded_stiles; // the loaded stiles
 TArray loaded_tiles; // the loaded tiles
 
-#endif // earray_h
+#endif // tarrays.h
