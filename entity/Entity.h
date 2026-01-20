@@ -11,7 +11,7 @@
 #include "entity/EntityBody.h"
 #include <unordered_set>
 
-class EntityTemplate { // these are basically "species"
+class EntityType { // these are basically "species"
     public:
     std::string name; // the name of this template
     EntityBody body;
@@ -36,7 +36,7 @@ class Entity { // these are individual creatures, etc
     std::string name; // the entity's name. May be empty, and often is.
 
     // construct a new entity from a template and place within a tile, optionally at some space:
-    Entity(const EntityTemplate & templ, unsigned int rnk, int tile_index, int x, int y, int * uuidctr) : Entity(templ.body, templ.symb, rnk, tile_index, x, y, uuidctr) {};
+    Entity(const EntityType & templ, unsigned int rnk, int tile_index, int x, int y, int * uuidctr) : Entity(templ.body, templ.symb, rnk, tile_index, x, y, uuidctr) {};
 
     Entity(const EntityBody & b, const char_col & sym, unsigned int rnk, int tile_index, int x, int y, int * uuidctr);
     
