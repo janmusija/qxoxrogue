@@ -11,7 +11,7 @@
 #include "base/macros.h"
 using tlist = std::vector<int>; // change from vector later
 
-class Stile {
+class Stile { //these should have position in the array stored
 public: 
     unsigned int rnk = 0; // this is the position within the hierarchical structure of the universe. Wait, that's not the first time I've used the term "rank" for this
     int uuid;

@@ -12,7 +12,7 @@
 #include "space/Space.h"
 using tlist = std::vector<int>; // change from vector later
 
-class Tile {
+class Tile { // these should indicate their position in the array
 public: 
     unsigned int rnk = 0; // this is the position within the hierarchical structure of
     int uuid;
@@ -28,6 +28,7 @@ public:
     virtual ~Tile() = default;
 protected:
     virtual Space * _gS(int x,int y) =0;
+    // virtual Tile * getNeighborPos(char dir, unsigned int x,unsigned int y, unsigned int & newx, unsigned int & newy) = 0; // TK implement
 };
 
 #endif // abstract_Tile.h

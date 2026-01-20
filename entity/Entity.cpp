@@ -27,6 +27,37 @@ void Entity::mov(unsigned int rk, int ti, int x, int y){
     link_space();
 }
 
+void Entity::step(char dir){
+    unlink_space();
+    if (dir == 'w' || dir == '8'){
+        if (y_coord > 0){
+            --y_coord;
+        } else {
+            goto movement_edge_case; //😘💕
+        }
+    } else if (dir == 'a' || dir == '4'){
+        if (x_coord > 0){
+            --x_coord;
+        } else {
+            goto movement_edge_case;
+        }
+    } else if (dir == 's' || dir == '2'){
+        if (y_coord < 16-1){ //change to be tile size later
+            ++y_coord;
+        } else {
+            goto movement_edge_case;
+        }
+    } else if (dir == 'd' || dir == '6'){
+        if (x_coord < 16-1){
+            ++x_coord;
+        } else {
+movement_edge_case: // literal edge case
+                    // go to connecting tile, via getNeighborPos. Then use move
+        }
+    }
+    link_space();
+}
+
 void Entity::unlink_space(int ti, int x, int y){
     Space * sp = loaded_tiles[ti].getSpace(x,y);
     if (sp){

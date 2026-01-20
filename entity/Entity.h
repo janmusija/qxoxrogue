@@ -46,8 +46,13 @@ class Entity { // these are individual creatures, etc
     void link_space(int ti, int x, int y);
     void link_space() {link_space(tile_index,x_coord, y_coord);};
 
+    void step(char dir);
+
     // is ai (or player)
-    bool ai = 1;
+    bool ai = 1;   
+    void noai(){ai = 0;};
+
+
     virtual ~Entity() = default;
     Entity(Entity&&) = default;
 };

@@ -53,18 +53,30 @@ int main(int argc, char *argv[]){
     initscr();
     register_color_pairs();
     curs_set(0);
-
-
+    //noecho();
+    
 
 
     Med_Tile m;
-    Camera cam(&m);
-    cam.cam_to_display();
-    //mvprintw(midy(),midx(),(std::to_string(midx()) + "," + std::to_string(midy())).c_str());
-    refresh();
-    
-    getch(); // for now, to keep from immediately closing
+    loaded_tiles.insert<Med_Tile>(std::move(m));
+    Camera cam(&(loaded_tiles[0]));
+    EntityBody testb;
+    //std::cout << loaded_tiles[0].
+    char_col charac = std::make_pair(L'\u263c',pair_fgbg(COLOR_BLACK+LIGHT_FG,COLOR_BLACK));
+    registerentity(Entity(testb,charac,0,0,4,4,&next_E_uuid));
+    Entity * pl = &loaded_entities[0];
+    pl->link_space();
+    pl->noai();
 
+    //std::cout << loaded_entities[0].x_coord << std::endl;
+    //mvprintw(midy(),midx(),(std::to_string(midx()) + "," + std::to_string(midy())).c_str());
+    
+    bool goon = 1;
+    while (goon){
+        cam.cam_to_display();
+        int ch = getch();
+        pl->step(ch);
+    }
 
 
 
