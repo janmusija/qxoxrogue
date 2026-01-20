@@ -10,12 +10,14 @@
 #include "render/render.h"
 #include "item/Item_Type.h"
 #include <gmpxx.h>
+#include <unordered_set>
 
 class Item { // these may be complicated-- I don't want to limit them to consisting of only one material.
     public:
     std::string internal_name;
     int uuid = -1;
     char_col symb;
+    std::unordered_set<std::string> tags;
     virtual ~Item() = default;
     Item(Item&&) = default;
     mpz_class mass;

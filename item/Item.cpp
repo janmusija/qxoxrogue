@@ -10,4 +10,5 @@ Item::Item(const Item_Type & typ, int u){
     symb = typ.symb;
     volume = typ.volume;
     mass = typ.mass;
+    tags = typ.tags;
 }

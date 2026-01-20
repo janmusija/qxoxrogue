@@ -9,6 +9,7 @@
 
 #include "render/render.h"
 #include "entity/EntityBody.h"
+#include <unordered_set>
 
 class EntityTemplate { // these are basically "species"
     public:
@@ -29,7 +30,7 @@ class Entity { // these are individual creatures, etc
     int y_coord = -1;
     
     EntityBody body; // the entity's body
-    bool Corporeal = true; // if false, does not render. can still have a body.
+    std::unordered_set<std::string> tags;
     char_col symb; // associated symbol to be rendered with
 
     std::string name; // the entity's name. May be empty, and often is.

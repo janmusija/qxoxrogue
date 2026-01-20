@@ -1,0 +1,15 @@
+#lines starting with # are comments
+{
+ID:water
+SOLID_NAME:ice
+LIQUID_NAME:water
+GAS_NAME:steam
+COLOR:BLUE
+# density is in units of g/m^3
+SOLID_DENSITY:916700
+LIQUID_DENSITY:997047
+GAS_DENSITY:600
+# temperatures are in millikelvins
+MP:273150
+BP:373150
+}

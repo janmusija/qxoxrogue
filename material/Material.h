@@ -12,6 +12,7 @@
 #include <gmpxx.h>
 #include "render/render.h"
 #include "documentation/units.h" // useful for converting between different units
+#include <unordered_set>
 
 class Material {
     public:
@@ -19,6 +20,7 @@ class Material {
     std::string solid_name; // e.g. "ice"
     std::string liquid_name; // e.g. "water"
     std::string gas_name; // e.g. "steam"
+    std::unordered_set<std::string> tags;
     qx_color color;
     mpz_class melt_point; // temp in millikelvin
     mpz_class boil_point; // also in mK

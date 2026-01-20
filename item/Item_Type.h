@@ -15,6 +15,7 @@
 class Material_Item_Type_Template { // e.g. "ingot", "plate", ""
     public:
     std::string internal_name;
+    std::unordered_set<std::string> tags;
     qx_char ch;
     mpz_class volume;
 };
@@ -22,6 +23,7 @@ class Material_Item_Type_Template { // e.g. "ingot", "plate", ""
 class Item_Type { // most items are instances of item types.
     public:
     std::string internal_name;
+    std::unordered_set<std::string> tags;
     char_col symb;
     mpz_class volume;
     mpz_class mass;

@@ -66,8 +66,10 @@ void Entity::unlink_space(int ti, int x, int y){
 }
 
 void Entity::link_space(int ti, int x, int y){
-    Space * sp = loaded_tiles[ti].getSpace(x,y);
-    if (sp){
-        sp->entities.insert(array_position);
+    if (!tags.contains("INCORPOREAL")){
+        Space * sp = loaded_tiles[ti].getSpace(x,y);
+        if (sp){
+            sp->entities.insert(array_position);
+        }
     }
 }

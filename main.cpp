@@ -21,6 +21,7 @@
 #include "arrays/EArrays.h"
 #include "arrays/TArrays.h"
 #include "tiles/tile/Med_Tile.h"
+#include "data/process_raws.h"
 
 int main(int argc, char *argv[]){
     // determine whether to initialize a fresh game or something else

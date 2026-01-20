@@ -14,7 +14,7 @@ using eilist = std::unordered_set<int>; // change from vector later
 
 class Space {
 public:
-    eilist entities; //positions of entities in array
+    eilist entities; //positions of entities in array. for rendering
     eilist items; // similarly
     char_col display(int n);
     char_col defaultdisplay = std::make_pair(L'\u00b7',pair_fgbg(COLOR_BLACK + LIGHT_FG,COLOR_BLACK)); // grey .

@@ -8,6 +8,7 @@
 
 Item_Type::Item_Type(const Material_Item_Type_Template& templ, const Material & mat, int state){
     volume = templ.volume;
+    tags = templ.tags;
     symb = std::make_pair(templ.ch,mat.color);
     if (state == 1) { // liquid
         mass = (templ.volume * mat.liquid_density + 500000) / 1000000; // +500000 round
