@@ -9,8 +9,8 @@
 
 #include "render/render.h"
 
-#include <vector> // this should probably be a set or something.
-using eilist = std::vector<int>; // change from vector later
+#include <unordered_set> // this should probably be a set or something.
+using eilist = std::unordered_set<int>; // change from vector later
 
 class Space {
 public:

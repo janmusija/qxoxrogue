@@ -41,6 +41,10 @@ class Entity { // these are individual creatures, etc
     
     // move to a new space. yes, you must explicitly specify the new tile even if it is the same
     void mov(unsigned int rnk, int tile_index, int x = -1, int y = -1);
+    void unlink_space(int ti, int x, int y);
+    void unlink_space() {unlink_space(tile_index,x_coord, y_coord);};
+    void link_space(int ti, int x, int y);
+    void link_space() {link_space(tile_index,x_coord, y_coord);};
 
     // is ai (or player)
     bool ai = 1;

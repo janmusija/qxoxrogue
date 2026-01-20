@@ -15,10 +15,11 @@ class Med_Tile : public Tile {
 public:
     Space spaces[16][16];
     Med_Tile();
-    Space * getSpace(int x,int y) override{
+    Med_Tile(Med_Tile&&) = default;
+protected:
+    Space * _gS(int x,int y) override{
         return &(spaces[x][y]);
     }
-    Med_Tile(Med_Tile&&) = default;
 };
 
 #endif // Med_Tile.h

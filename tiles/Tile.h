@@ -19,8 +19,15 @@ public:
     tlist neighb;
     unsigned int x_len;
     unsigned int y_len;
-    virtual Space * getSpace(int x,int y) =0;
+    Space * getSpace(int x,int y) {
+        if (x < 0 || y < 0 || x >= (int)x_len || y >= (int)y_len){
+            return nullptr;
+        }
+        return _gS(x,y);
+    }
     virtual ~Tile() = default;
+protected:
+    virtual Space * _gS(int x,int y) =0;
 };
 
 #endif // abstract_Tile.h

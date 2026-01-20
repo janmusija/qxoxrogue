@@ -22,7 +22,7 @@ class Item { // these may be complicated-- I don't want to limit them to consist
     mpz_class volume;
     // TK
     Item(const Item_Type & typ, int u=-1);
-    Item(const Material_Item_Type_Template & templ, const Material & mat, int state = 0, int u =-1) : Item (Item_Type(templ,mat,state), u){};
+    Item(const Material_Item_Type_Template & templ, const Material & mat, int state = 0, int u =-1) : Item(Item_Type(templ,mat,state), u){};
 };
 
 #endif // Item.h
