@@ -40,6 +40,7 @@ class EntityBody {
     void repeat_EB_series(unsigned int X, unsigned int n, const EntityBody & EB); // attach a chain of n copies of a body part at X
     void repeat_seg_star(unsigned int X, unsigned int n, const BodySegment & seg); // attach n copies of a segment directly at X
     void repeat_EB_star(unsigned int X, unsigned int n, const EntityBody & EB); // attach n copies of a body part directly at X
+    void LR_EB(unsigned int X, const EntityBody & EB);
 
 };
 

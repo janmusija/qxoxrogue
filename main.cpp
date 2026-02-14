@@ -74,7 +74,7 @@ int main(int argc, char *argv[]){
     
     bool goon = 1;
     while (goon){
-        cam.cam_to_display();
+        cam.cam_to_display(); // make controls less basic
         int ch = getch();
         pl->step(ch);
     }

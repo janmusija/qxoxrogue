@@ -98,3 +98,16 @@ void EntityBody::repeat_EB_star(unsigned int X, unsigned int n, const EntityBody
         attach_EB(X,FB); // this should really be implemented with && but I am not entirely sure of precisely what I can do with &&
     }
 }
+
+void EntityBody::LR_EB(unsigned int X, unsigned int n, const EntityBody & EB){ // attach n copies of a body part directly at X
+    {
+        EntityBody FB = EB;
+        FB.prepend_to_seg_names("left ");
+        attach_EB(X,FB); // this should really be implemented with && but I am not entirely sure of precisely what I can do with &&
+    }
+    {
+        EntityBody FB = EB;
+        FB.prepend_to_seg_names("right ");
+        attach_EB(X,FB); // this should really be implemented with && but I am not entirely sure of precisely what I can do with &&
+    }
+}
