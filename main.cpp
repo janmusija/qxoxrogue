@@ -61,9 +61,9 @@ int main(int argc, char *argv[]){
     Med_Tile m;
     loaded_tiles.insert<Med_Tile>(std::move(m));
     Camera cam(&(loaded_tiles[0]));
-    EntityBody testb;
+    EntityBody testb; // entirely empty body for now
     //std::cout << loaded_tiles[0].
-    char_col charac = std::make_pair(L'\u263c',pair_fgbg(COLOR_BLACK+LIGHT_FG,COLOR_BLACK));
+    char_col charac = std::make_pair(L'\u0040',pair_fgbg(COLOR_BLACK+LIGHT_FG,COLOR_BLACK));
     registerentity(Entity(testb,charac,0,0,4,4,&next_E_uuid));
     Entity * pl = &loaded_entities[0];
     pl->link_space();
