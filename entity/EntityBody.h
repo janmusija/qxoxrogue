@@ -34,6 +34,8 @@ class EntityBody {
 
     // manipulate body parts
     void contract(unsigned int X); // delete body part at X and contract attached edges
+    void attach_seg(unsigned int X, BodySegment && seg); // attach segment at X (move)
+    void attach_EB(unsigned int X, EntityBody && EB); // attach body part at X (move)
     void attach_seg(unsigned int X, const BodySegment & seg); // attach segment at X
     void attach_EB(unsigned int X, const EntityBody & EB); // attach body part at X
     void repeat_seg_series(unsigned int X, unsigned int n, const BodySegment & seg); // attach a chain of n copies of a segment at X

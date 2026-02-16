@@ -44,11 +44,27 @@ void EntityBody::contract(unsigned int X){
         segments.erase(it);
     }
 }
-    
+
+void EntityBody::attach_seg(unsigned int X, BodySegment && seg){ // attach segment at X (move)
+    seg.parent = X;
+    segments.emplace_back(std::move(seg));
+}
+
+void EntityBody::attach_EB(unsigned int X, EntityBody && EB){ // attach body part at X (move)
+    unsigned int l = segments.size();
+    for (unsigned int i = 0; i < EB.segments.size(); i++){
+        if (EB.segments[i].parent >= 0){
+            EB.segments[i].parent +=l;
+        } else {
+            EB.segments[i].parent = X;
+        }
+        segments.emplace_back(std::move(EB.segments[i]));
+    }
+} 
+
 void EntityBody::attach_seg(unsigned int X, const BodySegment & seg){ // attach segment at X
     BodySegment teg = seg;
-    teg.parent = X;
-    segments.emplace_back(std::move(teg));
+    attach_seg(X,std::move(teg));
 }
 
 void EntityBody::attach_EB(unsigned int X, const EntityBody & EB){ // attach body part at X
@@ -99,7 +115,7 @@ void EntityBody::repeat_EB_star(unsigned int X, unsigned int n, const EntityBody
     }
 }
 
-void EntityBody::LR_EB(unsigned int X, unsigned int n, const EntityBody & EB){ // attach n copies of a body part directly at X
+void EntityBody::LR_EB(unsigned int X, const EntityBody & EB){ // attach n copies of a body part directly at X
     {
         EntityBody FB = EB;
         FB.prepend_to_seg_names("left ");
